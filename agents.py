@@ -104,23 +104,28 @@ def save_agent(text: str, file_name: str) -> None:
         file.write(text)
 
     print("Done!")
-        
-if __name__ == "__main__":
+
+# orchestrator
+def main():
     input_topic = input("Enter your topic that want to search: ")
     input_num_result = int(input("Enter number of result: ")) 
 
     response = search_agent(input_topic, input_num_result)
-    save_agent(response, "first_reponse.docx")
-    # print(response, end= "\n\n\n----------\n\n\n")
+    print("Searching Done!")
+    save_agent(response, f"save_files/result of searching about {input_topic}.rtf")
 
 
     summary_text = summarize_agent(response)
-    save_agent(summary_text, "summary_of_first_reponse.docx")
-    # print(summary_text)
+    print("summarizing Done!")
+    save_agent(summary_text, f"save_files/summary of all result about {input_topic}.rtf")
+
 
     translate_text = translator_agent(summary_text)
-    save_agent(translate_text, "translate_into_persian_of_summary_of_first_reponse.docx")
-    # print(translate_text)
+    print("translate Done!")
+    save_agent(translate_text, f"save_files/translate of summary about {input_topic}.rtf")
 
+        
+if __name__ == "__main__":
+    main()
 
 
