@@ -71,6 +71,34 @@ do not use table.
     return response.message.content
 
 
+
+# 3.Agent Translator
+def translator_agent(english_text: str) -> str:
+    print("Translate the Summary Text into Persian ... ")
+
+    response = client.chat(
+        model=ollama_model,
+        messages=[
+            {
+                "role": "system",
+                "content": """
+you are the helpful translator languages into the persian.
+translate the givin text from user into persian.
+                """
+            },
+            {
+                "role": "user",
+                "content": f"Translate the below text into the persian language.\n\n{english_text}"
+            }
+        ]
+    )
+
+    return response.message.content
+
+
+
+
+
 if __name__ == "__main__":
     input_topic = input("Enter your topic that want to search: ")
     input_num_result = int(input("Enter number of result: ")) 
@@ -79,4 +107,9 @@ if __name__ == "__main__":
 
     print(response, end= "\n\n\n----------\n\n\n")
 
-    print(summarize_agent(response))
+
+    summary_text = summarize_agent(response)
+    print(summary_text)
+
+    translate_text = translator_agent(summary_text)
+    print(translate_text)
