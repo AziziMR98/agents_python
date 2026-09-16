@@ -96,20 +96,31 @@ translate the givin text from user into persian.
     return response.message.content
 
 
+# 4.Agent Translator
+def save_agent(text: str, file_name: str) -> None:
+    print("Saving the all result in file ... ")
 
+    with open(file_name, 'w', encoding="UTF-8") as file:
+        file.write(text)
 
-
+    print("Done!")
+        
 if __name__ == "__main__":
     input_topic = input("Enter your topic that want to search: ")
     input_num_result = int(input("Enter number of result: ")) 
 
     response = search_agent(input_topic, input_num_result)
-
-    print(response, end= "\n\n\n----------\n\n\n")
+    save_agent(response, "first_reponse.docx")
+    # print(response, end= "\n\n\n----------\n\n\n")
 
 
     summary_text = summarize_agent(response)
-    print(summary_text)
+    save_agent(summary_text, "summary_of_first_reponse.docx")
+    # print(summary_text)
 
     translate_text = translator_agent(summary_text)
-    print(translate_text)
+    save_agent(translate_text, "translate_into_persian_of_summary_of_first_reponse.docx")
+    # print(translate_text)
+
+
+
