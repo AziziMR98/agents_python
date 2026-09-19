@@ -53,24 +53,3 @@ if __name__ == "__main__":
 
 
 
-
-# Extract the assistant message with reasoning_details
-# response = response.choices[0].message
-
-# Preserve the assistant message with reasoning_details
-# messages = [
-#   {"role": "user", "content": "How many r's are in the word 'strawberry'?"},
-#   {
-#     "role": "assistant",
-#     "content": response.content,
-#     "reasoning_details": response.reasoning_details  # Pass back unmodified
-#   },
-#   {"role": "user", "content": "Are you sure? Think carefully."}
-# ]
-
-# # Second API call - model continues reasoning from where it left off
-# response2 = client.chat.completions.create(
-#   model="google/gemma-4-31b-it:free",
-#   messages=messages,
-#   extra_body={"reasoning": {"enabled": True}}
-# )

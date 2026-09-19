@@ -4,3 +4,4 @@ python-dotenv
 requests
 openai
 duckduckgo_search
+alive_progress

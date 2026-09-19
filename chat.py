@@ -49,6 +49,6 @@ if __name__ == "__main__":
     user_prompt = input("User: ")
 
     response = ask_ollama(user_prompt)
-    print(response)
+    # print(response)
     # print(f"Model that Response:\n {response['model']}", end="\n\n")
-    # print(f"Response:\n {response['message']['content']}", end="\n\n")
+    print(f"Response:\n {response['message']['content']}", end="\n\n")
